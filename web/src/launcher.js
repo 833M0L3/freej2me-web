@@ -517,7 +517,183 @@ async function reloadUI() {
 
     state.games = await loadGames();
     fillGamesList(state.games);
+    await loadServerCatalog();
     setupAddMode();
+}
+
+async function loadServerCatalog() {
+    const catalogContainer = document.getElementById("server-game-catalog");
+    if (!catalogContainer) return;
+
+    try {
+        const res = await fetch("games/games.json");
+        if (!res.ok) {
+            catalogContainer.innerHTML = `<div class="empty-catalog-msg">No server catalog found (games/games.json). Add games to <code>web/games/</code> to list them here.</div>`;
+            return;
+        }
+        const serverGames = await res.json();
+        fillCatalogList(serverGames);
+    } catch (err) {
+        console.warn("Could not load games/games.json catalog:", err);
+        catalogContainer.innerHTML = `<div class="empty-catalog-msg">No server games configured yet. Drop J2ME games into <code>web/games/</code> to list them.</div>`;
+    }
+}
+
+function fillCatalogList(catalogGames) {
+    const container = document.getElementById("server-game-catalog");
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    if (!catalogGames || catalogGames.length === 0) {
+        container.innerHTML = `<div class="empty-catalog-msg">No server games configured yet. Add games to <code>web/games/games.json</code>.</div>`;
+        return;
+    }
+
+    for (const game of catalogGames) {
+        const card = document.createElement("div");
+        card.className = "catalog-card";
+
+        // Icon
+        if (game.icon) {
+            const iconImg = document.createElement("img");
+            iconImg.className = "catalog-card-icon";
+            iconImg.src = game.icon;
+            iconImg.onerror = () => {
+                iconImg.replaceWith(createFallbackIcon());
+            };
+            card.appendChild(iconImg);
+        } else {
+            card.appendChild(createFallbackIcon());
+        }
+
+        // Title
+        const title = document.createElement("div");
+        title.className = "catalog-card-title";
+        title.textContent = game.title || game.id || "Untitled Game";
+        card.appendChild(title);
+
+        // Description
+        if (game.description) {
+            const desc = document.createElement("div");
+            desc.className = "catalog-card-desc";
+            desc.textContent = game.description;
+            card.appendChild(desc);
+        }
+
+        // Tags
+        const tags = document.createElement("div");
+        tags.className = "catalog-card-tags";
+
+        if (game.screenSize) {
+            const tagSize = document.createElement("span");
+            tagSize.className = "tag";
+            tagSize.textContent = game.screenSize;
+            tags.appendChild(tagSize);
+        }
+        if (game.phoneType) {
+            const tagPhone = document.createElement("span");
+            tagPhone.className = "tag";
+            tagPhone.textContent = game.phoneType;
+            tags.appendChild(tagPhone);
+        }
+        card.appendChild(tags);
+
+        // Play Button
+        const playBtn = document.createElement("button");
+        playBtn.className = "play-btn";
+        playBtn.innerHTML = `▶ Play Game`;
+        playBtn.onclick = async () => {
+            playBtn.disabled = true;
+            playBtn.textContent = "Loading...";
+            await launchServerGame(game);
+        };
+        card.appendChild(playBtn);
+
+        container.appendChild(card);
+    }
+}
+
+function createFallbackIcon() {
+    const iconDiv = document.createElement("div");
+    iconDiv.className = "catalog-card-icon";
+    iconDiv.textContent = "🎮";
+    return iconDiv;
+}
+
+async function launchServerGame(game) {
+    if (game.appId) {
+        window.location.href = `run?app=${encodeURIComponent(game.appId)}`;
+        return;
+    }
+
+    if (!game.jar) {
+        alert("Game entry missing JAR file path!");
+        return;
+    }
+
+    const appId = game.id || game.title.toLowerCase().replace(/[^a-z0-9]/g, '_');
+    
+    // Check if already installed
+    const existing = state.games.find(g => g.appId === appId);
+    if (existing) {
+        window.location.href = `run?app=${encodeURIComponent(appId)}`;
+        return;
+    }
+
+    try {
+        const res = await fetch(game.jar);
+        if (!res.ok) throw new Error(`HTTP ${res.status} - ${game.jar} not found`);
+        const fileBuffer = await res.arrayBuffer();
+
+        const File = await lib.java.io.File;
+        const jarFile = await new File("/files/_tmp/" + state.uploadedJars++ + ".jar");
+        await launcherUtil.copyJar(new Int8Array(fileBuffer), jarFile);
+
+        const MIDletLoader = await lib.org.recompile.mobile.MIDletLoader;
+        const loader = await MIDletLoader.getMIDletLoader(jarFile);
+
+        if (game.jad) {
+            try {
+                const jadRes = await fetch(game.jad);
+                if (jadRes.ok) {
+                    const jadAb = await jadRes.arrayBuffer();
+                    await launcherUtil.augementLoaderWithJAD(loader, new Int8Array(jadAb));
+                }
+            } catch (e) {
+                console.warn("Could not fetch JAD descriptor:", e);
+            }
+        }
+
+        if (!(await loader.getAppId())) {
+            await launcherUtil.ensureAppId(loader, game.title || appId);
+        }
+
+        let finalAppId = (await loader.getAppId()) || appId;
+
+        const settings = {
+            ...defaultSettings,
+            phone: game.phoneType || "Nokia",
+            sound: game.enableSound !== false ? "on" : "off",
+        };
+        if (game.screenSize) {
+            const [w, h] = game.screenSize.split("x");
+            if (w && h) {
+                settings.width = w;
+                settings.height = h;
+            }
+        }
+
+        const jsettings = await kvToJava(settings);
+        const jappProps = await kvToJava(game.appProperties || {});
+        const jsysProps = await kvToJava(game.systemProperties || {});
+
+        await launcherUtil.initApp(jarFile, loader, jsettings, jappProps, jsysProps);
+        window.location.href = `run?app=${encodeURIComponent(finalAppId)}`;
+    } catch (err) {
+        console.error("Error launching server game:", err);
+        alert(`Failed to launch game: ${err.message}`);
+    }
 }
 
 async function doUninstallGame(appId) {

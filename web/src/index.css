@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-slate-100 text-slate-900 font-sans min-h-screen antialiased selection:bg-lime-400 selection:text-black;
+    background-color: #f1f5f9;
+    /* Faint subtle grid texture */
+    background-image: 
+      linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  img {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+}
+
+.font-pixel {
+  font-family: 'Silkscreen', cursive, monospace;
+}
+
+.font-vt {
+  font-family: 'VT323', monospace;
+}
+
+/* Waptrick Retro Box Styling: Black, Lime Green, White */
+.wap-box {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  box-shadow: 3px 3px 0px #000000;
+}
+
+.wap-box-header {
+  background-color: #000000;
+  color: #84cc16;
+  border-bottom: 2px solid #000000;
+  font-family: 'Silkscreen', monospace;
+}
+
+/* WAP Badge */
+.wap-badge {
+  @apply inline-flex items-center px-2 py-0.5 text-[10px] font-mono font-bold uppercase bg-slate-100 border-2 border-black text-slate-900 shadow-[1px_1px_0px_#000];
+}
+
+/* Waptrick Electric Lime Play Button */
+.wap-btn-play {
+  background: #84cc16;
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
+  color: #000000;
+  font-family: 'Silkscreen', monospace;
+  font-weight: 700;
+  transition: all 0.1s ease;
+}
+
+.wap-btn-play:hover {
+  background: #a3e635;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #000000;
+}
+
+.wap-btn-play:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #000000;
+}

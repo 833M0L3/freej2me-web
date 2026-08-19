@@ -1,0 +1,23 @@
+{
+  "name": "freej2me-web",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build && node scripts/copy-assets.js",
+    "preview": "vite preview --host 0.0.0.0 --port 3000",
+    "scan": "node web/games/scan.js",
+    "serve": "npm run build && npx serve -u dist -l 3000"
+  },
+  "dependencies": {
+    "lucide-react": "^1.16.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^4.0.0",
+    "vite": "^6.0.0"
+  }
+}

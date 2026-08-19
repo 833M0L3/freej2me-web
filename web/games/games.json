@@ -1,0 +1,44 @@
+[
+  {
+    "id": "diamond-rush",
+    "title": "Diamond Rush",
+    "version": "1.1.1",
+    "vendor": "[ANDREW-LVIV] / Gameloft SA",
+    "size": "297 KB",
+    "releaseDate": "2026-08-19",
+    "description": "By [ANDREW-LVIV] / Gameloft SA",
+    "icon": "games/icons/diamond-rush.png",
+    "jar": "games/jar/Diamond_Rush.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
+    "id": "poptw",
+    "title": "Prince Of Persia 3",
+    "version": "1.0.1",
+    "vendor": "[ANDREW-LVIV] / Gameloft SA",
+    "size": "312 KB",
+    "releaseDate": "2026-08-19",
+    "description": "By [ANDREW-LVIV] / Gameloft SA",
+    "icon": "games/icons/poptw.png",
+    "jar": "games/jar/PoPTW.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
+    "id": "stranded",
+    "title": "Stranded",
+    "version": "1.0.1",
+    "vendor": "DDJ",
+    "size": "522 KB",
+    "releaseDate": "2026-08-19",
+    "description": "By DDJ",
+    "icon": "games/icons/stranded.png",
+    "jar": "games/jar/Stranded.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  }
+]
