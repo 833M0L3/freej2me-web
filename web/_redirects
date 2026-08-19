@@ -1,1 +1,1 @@
-/run    /run.html    200
+# Cloudflare Pages handles /run -> run.html automatically. No custom redirects needed.
