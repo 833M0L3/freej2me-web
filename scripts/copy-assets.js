@@ -42,7 +42,7 @@ function copyRecursiveSync(src, dest) {
 }
 
 console.log('📦 Copying J2ME emulator static assets to dist/...');
-const itemsToCopy = ['freej2me-web.jar', 'init.zip', 'run.html', 'games', 'libjs', 'libmedia', 'libmidi', 'src', 'assets'];
+const itemsToCopy = ['freej2me-web.jar', 'init.zip', 'run.html', 'games', 'libjs', 'libmedia', 'libmidi', 'src', 'assets', '_redirects', '_headers'];
 
 itemsToCopy.forEach((item) => {
     const srcPath = path.join(WEB_DIR, item);

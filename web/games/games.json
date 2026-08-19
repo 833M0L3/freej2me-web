@@ -1,5 +1,19 @@
 [
   {
+    "id": "bounce",
+    "title": "bounce",
+    "version": "1.0.0",
+    "vendor": "",
+    "size": "54 KB",
+    "releaseDate": "2026-08-19",
+    "description": "",
+    "icon": "games/icons/bounce.png",
+    "jar": "games/jar/bounce.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
     "id": "diamond-rush",
     "title": "Diamond Rush",
     "version": "1.1.1",
