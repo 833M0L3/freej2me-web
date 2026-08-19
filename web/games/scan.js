@@ -44,49 +44,102 @@ function extractScreenSize(props) {
     return null;
 }
 
-// Zero-dependency ZIP reader
+// Robust ZIP reader using Central Directory (handles all compression modes & obfuscated JARs)
 function readZip(filePath) {
     const buf = fs.readFileSync(filePath);
-    let offset = 0;
+    
+    // Find End of Central Directory (0x06054b50) searching backwards
+    let eocdOffset = -1;
+    for (let i = buf.length - 22; i >= 0; i--) {
+        if (buf.readUInt32LE(i) === 0x06054b50) {
+            eocdOffset = i;
+            break;
+        }
+    }
+
+    if (eocdOffset === -1) {
+        return { getFile: () => null, findFallbackIcon: () => null };
+    }
+
+    const totalEntries = buf.readUInt16LE(eocdOffset + 10);
+    const cdOffset = buf.readUInt32LE(eocdOffset + 16);
+
+    let offset = cdOffset;
     const entries = {};
 
-    while (offset < buf.length - 30) {
-        if (buf.readUInt32LE(offset) !== 0x04034b50) {
-            offset++;
-            continue;
+    for (let i = 0; i < totalEntries && offset < eocdOffset; i++) {
+        if (buf.readUInt32LE(offset) !== 0x02014b50) break;
+
+        const compMethod = buf.readUInt16LE(offset + 10);
+        const compSize = buf.readUInt32LE(offset + 20);
+        const fileNameLen = buf.readUInt16LE(offset + 28);
+        const extraLen = buf.readUInt16LE(offset + 30);
+        const commentLen = buf.readUInt16LE(offset + 32);
+        const localHeaderOffset = buf.readUInt32LE(offset + 42);
+
+        const fileName = buf.toString('utf8', offset + 46, offset + 46 + fileNameLen);
+        
+        if (localHeaderOffset < buf.length - 30 && buf.readUInt32LE(localHeaderOffset) === 0x04034b50) {
+            const localFileNameLen = buf.readUInt16LE(localHeaderOffset + 26);
+            const localExtraLen = buf.readUInt16LE(localHeaderOffset + 28);
+            const dataStart = localHeaderOffset + 30 + localFileNameLen + localExtraLen;
+            
+            entries[fileName.toLowerCase()] = {
+                fileName,
+                compMethod,
+                compSize,
+                dataStart
+            };
         }
 
-        const compMethod = buf.readUInt16LE(offset + 8);
-        const compSize = buf.readUInt32LE(offset + 18);
-        const fileNameLen = buf.readUInt16LE(offset + 26);
-        const extraLen = buf.readUInt16LE(offset + 28);
+        offset += 46 + fileNameLen + extraLen + commentLen;
+    }
 
-        const fileName = buf.toString('utf8', offset + 30, offset + 30 + fileNameLen);
-        const dataStart = offset + 30 + fileNameLen + extraLen;
-        const compData = buf.subarray(dataStart, dataStart + compSize);
-
-        entries[fileName] = { compMethod, compData };
-        offset = dataStart + compSize;
+    function extractBuffer(entry) {
+        if (!entry) return null;
+        const data = buf.subarray(entry.dataStart, entry.dataStart + entry.compSize);
+        if (entry.compMethod === 0) {
+            return data;
+        } else if (entry.compMethod === 8) {
+            try {
+                return zlib.inflateRawSync(data);
+            } catch (e) {
+                try {
+                    return zlib.inflateSync(data);
+                } catch (e2) {
+                    return null;
+                }
+            }
+        }
+        return data;
     }
 
     return {
         getFile(name) {
             if (!name) return null;
-            const cleanName = name.replace(/^\//, '').trim();
-            const key = Object.keys(entries).find(k => 
-                k.toLowerCase() === cleanName.toLowerCase() || 
-                k.replace(/^\//, '').toLowerCase() === cleanName.toLowerCase()
-            );
-            if (!key) return null;
-            const entry = entries[key];
-            if (entry.compMethod === 0) {
-                return entry.compData;
-            } else if (entry.compMethod === 8) {
-                try {
-                    return zlib.inflateRawSync(entry.compData);
-                } catch (e) {
-                    return null;
-                }
+            const cleanName = name.replace(/^\//, '').trim().toLowerCase();
+            let entry = entries[cleanName];
+            if (!entry) {
+                const key = Object.keys(entries).find(k => 
+                    k.endsWith('/' + cleanName) || 
+                    k === cleanName || 
+                    k.replace(/^\//, '') === cleanName
+                );
+                if (key) entry = entries[key];
+            }
+            return extractBuffer(entry);
+        },
+
+        findFallbackIcon() {
+            const keys = Object.keys(entries);
+            const priorityMatch = keys.find(k => /\bicon\b/i.test(k) && /\.(png|jpg|jpeg)$/i.test(k)) ||
+                                 keys.find(k => /icon/i.test(k) && /\.(png|jpg|jpeg)$/i.test(k)) ||
+                                 keys.find(k => /\.(png|jpg|jpeg)$/i.test(k));
+            if (priorityMatch) {
+                return {
+                    name: entries[priorityMatch].fileName,
+                    buffer: extractBuffer(entries[priorityMatch])
+                };
             }
             return null;
         }
@@ -170,16 +223,23 @@ function scanGames() {
             }
 
             let iconWebPath = '';
-            if (iconPathInZip) {
-                const iconBuf = zip.getFile(iconPathInZip);
-                if (iconBuf && iconBuf.length > 0) {
-                    const ext = path.extname(iconPathInZip).toLowerCase() || '.png';
-                    const iconFileName = `${appId}${ext}`;
-                    const iconDiskPath = path.join(ICONS_DIR, iconFileName);
-                    fs.writeFileSync(iconDiskPath, iconBuf);
-                    iconWebPath = `games/icons/${iconFileName}`;
-                    console.log(`  └─ Extracted icon -> web/games/icons/${iconFileName}`);
+            let iconBuf = iconPathInZip ? zip.getFile(iconPathInZip) : null;
+            let ext = (iconPathInZip && path.extname(iconPathInZip)) ? path.extname(iconPathInZip).toLowerCase() : '.png';
+
+            if (!iconBuf || iconBuf.length === 0) {
+                const fallback = zip.findFallbackIcon();
+                if (fallback && fallback.buffer) {
+                    iconBuf = fallback.buffer;
+                    ext = path.extname(fallback.name).toLowerCase() || '.png';
                 }
+            }
+
+            if (iconBuf && iconBuf.length > 0) {
+                const iconFileName = `${appId}${ext}`;
+                const iconDiskPath = path.join(ICONS_DIR, iconFileName);
+                fs.writeFileSync(iconDiskPath, iconBuf);
+                iconWebPath = `games/icons/${iconFileName}`;
+                console.log(`  └─ Extracted icon -> web/games/icons/${iconFileName}`);
             }
 
             const existing = existingCatalog.find(g => g.id === appId || g.jar === `games/jar/${file}`);
