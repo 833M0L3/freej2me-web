@@ -168,6 +168,20 @@
     "enableSound": true
   },
   {
+    "id": "fmxiv-de-en-es-fr-it-nokia-6280",
+    "title": "FMX IV",
+    "version": "0.3.3",
+    "vendor": "Glu Mobile LTD",
+    "size": "441 KB",
+    "releaseDate": "2026-08-20",
+    "description": "Visit dedomil.net for more games!",
+    "icon": "games/icons/fmxiv-de-en-es-fr-it-nokia-6280.png",
+    "jar": "games/jar/fmxiv_de_en_es_fr_it_Nokia_6280.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
     "id": "gangstar2-kingsofl-a-s40v5",
     "title": "Gangstar 2",
     "version": "1.1.2",
@@ -429,6 +443,20 @@
     "description": "By Gameloft SA",
     "icon": "games/icons/mightandmagicii-s40v3a.png",
     "jar": "games/jar/MightAndMagicII_s40v3a.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
+    "id": "nateadamsfreestylemotocross-s40v3a",
+    "title": "NateAdamsFMX",
+    "version": "1.5.0",
+    "vendor": "www.chipeduk-mobile.tk",
+    "size": "148 KB",
+    "releaseDate": "2026-08-20",
+    "description": "By www.chipeduk-mobile.tk",
+    "icon": "games/icons/nateadamsfreestylemotocross-s40v3a.png",
+    "jar": "games/jar/NateAdamsFreestyleMotocross_s40v3a.jar",
     "screenSize": "240x320",
     "phoneType": "Nokia",
     "enableSound": true
