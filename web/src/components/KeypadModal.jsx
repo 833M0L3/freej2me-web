@@ -76,11 +76,11 @@ export default function KeypadModal({ isOpen, onClose }) {
               </div>
               <div className="flex justify-between items-center bg-white p-2 border-2 border-black">
                 <span className="font-bold text-slate-800">* Key:</span>
-                <span className="font-pixel text-[10px] bg-lime-400 text-black px-1.5 py-0.5 border-2 border-black font-bold shadow-[1px_1px_0px_#000]">E</span>
+                <span className="font-pixel text-[10px] bg-lime-400 text-black px-1.5 py-0.5 border-2 border-black font-bold shadow-[1px_1px_0px_#000]">E / *</span>
               </div>
               <div className="flex justify-between items-center bg-white p-2 border-2 border-black">
                 <span className="font-bold text-slate-800"># Key:</span>
-                <span className="font-pixel text-[10px] bg-lime-400 text-black px-1.5 py-0.5 border-2 border-black font-bold shadow-[1px_1px_0px_#000]">R</span>
+                <span className="font-pixel text-[10px] bg-lime-400 text-black px-1.5 py-0.5 border-2 border-black font-bold shadow-[1px_1px_0px_#000]">R / #</span>
               </div>
             </div>
           </div>

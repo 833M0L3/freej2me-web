@@ -16,8 +16,8 @@ https://zb3.github.io/freej2me-web/
 | <kbd>F2</kbd> or <kbd>W</kbd> | Right soft key |
 | <kbd>0</kbd> to <kbd>9</kbd> | Keypad Numbers |
 | Numpad keys | Numbers with keys 123 and 789 swaped |
-| <kbd>E</kbd> | * |
-| <kbd>R</kbd> | # |
+| <kbd>E</kbd> or <kbd>*</kbd> | * |
+| <kbd>R</kbd> or <kbd>#</kbd> | # |
 | <kbd>↑</kbd> | Up |
 | <kbd>↓</kbd> | Down |
 | <kbd>←</kbd> | Left |

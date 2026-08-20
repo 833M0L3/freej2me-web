@@ -74,9 +74,15 @@ function setListeners() {
 
     function handleKeyEvent(e) {
         const isDown = e.type === 'keydown';
+        let key = e.code;
+        if (e.key === '*') {
+            key = 'NumpadAsterisk';
+        } else if (e.key === '#') {
+            key = 'NumpadDivide';
+        }
 
-        if (codeMap[e.code]) {
-            keyRepeatManager.post(isDown, e.code, {
+        if (codeMap[key]) {
+            keyRepeatManager.post(isDown, key, {
                 symbol: e.key.length == 1 ? e.key.charCodeAt(0) : '\x00',
                 ctrlKey: e.ctrlKey,
                 shiftKey: e.shiftKey
