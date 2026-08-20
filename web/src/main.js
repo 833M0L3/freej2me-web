@@ -3,6 +3,9 @@ import { LibMidi, createUnlockingAudioContext } from "../libmidi/libmidi.js";
 import { codeMap, KeyRepeatManager } from "./key.js";
 import { EventQueue } from "./eventqueue.js";
 import { initKbdListeners, setKbdHandler, kbdWidth, kbdHeight } from "./screenKbd.js";
+import { installRangeFetchPolyfill } from "./rangePolyfill.js";
+
+installRangeFetchPolyfill();
 
 // we need to import natives here, don't use System.loadLibrary
 // since CheerpJ fails to load them in firefox and we can't set breakpoints

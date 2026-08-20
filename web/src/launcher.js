@@ -1,3 +1,7 @@
+import { installRangeFetchPolyfill } from "./rangePolyfill.js";
+
+installRangeFetchPolyfill();
+
 // note that we can only call java stuff if thread not running..
 const cheerpjWebRoot = '/app'+location.pathname.replace(/\/$/,'');
 

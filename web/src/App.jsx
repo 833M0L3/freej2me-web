@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import GameGrid from './components/GameGrid';
 import KeypadModal from './components/KeypadModal';
+import { installRangeFetchPolyfill } from './rangePolyfill.js';
+
+installRangeFetchPolyfill();
 
 export default function App() {
   const [games, setGames] = useState([]);

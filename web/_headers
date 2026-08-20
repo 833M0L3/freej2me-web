@@ -4,30 +4,35 @@
   Access-Control-Allow-Headers: Range, Content-Type, Authorization
   Access-Control-Expose-Headers: Content-Length, Content-Range, Accept-Ranges, Content-Encoding
   Accept-Ranges: bytes
+  Cache-Control: public, max-age=31536000, no-transform
 
-/*.jar
+/freej2me-web.jar
   Content-Type: application/java-archive
   Accept-Ranges: bytes
   Cache-Control: public, max-age=31536000, no-transform
   Access-Control-Allow-Origin: *
   Access-Control-Expose-Headers: Content-Length, Content-Range, Accept-Ranges
 
-/*.wasm
-  Content-Type: application/wasm
-  Accept-Ranges: bytes
-  Cache-Control: public, max-age=31536000, no-transform
-  Access-Control-Allow-Origin: *
-  Access-Control-Expose-Headers: Content-Length, Content-Range, Accept-Ranges
-
-/*.zip
+/init.zip
   Content-Type: application/zip
   Accept-Ranges: bytes
   Cache-Control: public, max-age=31536000, no-transform
   Access-Control-Allow-Origin: *
   Access-Control-Expose-Headers: Content-Length, Content-Range, Accept-Ranges
 
-/*.data
-  Content-Type: application/octet-stream
+/games/*
+  Accept-Ranges: bytes
+  Cache-Control: public, max-age=31536000, no-transform
+  Access-Control-Allow-Origin: *
+  Access-Control-Expose-Headers: Content-Length, Content-Range, Accept-Ranges
+
+/libmedia/*
+  Accept-Ranges: bytes
+  Cache-Control: public, max-age=31536000, no-transform
+  Access-Control-Allow-Origin: *
+  Access-Control-Expose-Headers: Content-Length, Content-Range, Accept-Ranges
+
+/libmidi/*
   Accept-Ranges: bytes
   Cache-Control: public, max-age=31536000, no-transform
   Access-Control-Allow-Origin: *
