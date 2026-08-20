@@ -308,6 +308,34 @@
     "enableSound": true
   },
   {
+    "id": "gunfever-s40v3a",
+    "title": "GunFever",
+    "version": "1.0.4",
+    "vendor": "DeValley Entertainment",
+    "size": "169 KB",
+    "releaseDate": "2026-08-20",
+    "description": "GunFever",
+    "icon": "games/icons/gunfever-s40v3a.png",
+    "jar": "games/jar/GunFever_s40v3a.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
+    "id": "mi3-nokia-6234-en-nonigp-101-n95",
+    "title": "Mission Impossible III",
+    "version": "1.0.1",
+    "vendor": "Gameloft SA",
+    "size": "255 KB",
+    "releaseDate": "2009-09-06",
+    "description": "By Gameloft SA",
+    "icon": "games/icons/mi3-nokia-6234-en-nonigp-101-n95.png",
+    "jar": "games/jar/MI3_Nokia_6234_EN_NONIGP_101_N95.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
     "id": "mightandmagicii-s40v3a",
     "title": "MightAndMagicII",
     "version": "1.1.1",
@@ -443,6 +471,20 @@
     "description": "By DDJ",
     "icon": "games/icons/stranded.png",
     "jar": "games/jar/Stranded.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
+    "id": "super-mario-bros-240x320-192179",
+    "title": "Super Mario Bros.",
+    "version": "1.0",
+    "vendor": "mob.ua",
+    "size": "194 KB",
+    "releaseDate": "2026-08-20",
+    "description": "Best Games Only On MadiyarM.spaces.ru & AE-mods.ruNokia-MIDlet-Category: Game",
+    "icon": "games/icons/super-mario-bros-240x320-192179.png",
+    "jar": "games/jar/super_mario_bros_240x320_192179.jar",
     "screenSize": "240x320",
     "phoneType": "Nokia",
     "enableSound": true
