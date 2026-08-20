@@ -126,6 +126,34 @@
     "enableSound": true
   },
   {
+    "id": "connect2media-f-nokia-2700classic-en-contra4-v0-0-2",
+    "title": "Contra 4",
+    "version": "0.0.2",
+    "vendor": "Connect 2 Media",
+    "size": "556 KB",
+    "releaseDate": "2026-08-20",
+    "description": "Visit dedomil.net for more games!",
+    "icon": "games/icons/connect2media-f-nokia-2700classic-en-contra4-v0-0-2.png",
+    "jar": "games/jar/connect2media_f_Nokia_2700Classic_en_contra4_v0_0_2.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
+    "id": "cowandchicken-s40v3a",
+    "title": "CowAndChicken",
+    "version": "0.13.5",
+    "vendor": "Player X",
+    "size": "196 KB",
+    "releaseDate": "2026-08-20",
+    "description": "By Player X",
+    "icon": "games/icons/cowandchicken-s40v3a.png",
+    "jar": "games/jar/CowAndChicken_s40v3a.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
     "id": "diamond-rush",
     "title": "Diamond Rush",
     "version": "1.1.1",
@@ -196,6 +224,20 @@
     "enableSound": true
   },
   {
+    "id": "gf-johnnybravo-v1-0-2-en-es-de-fr-it-pt-nok-n73",
+    "title": "Johnny Bravo",
+    "version": "1.0.2",
+    "vendor": "GlobalFun",
+    "size": "407 KB",
+    "releaseDate": "2026-08-20",
+    "description": "Visit dedomil.net for more games!",
+    "icon": "games/icons/gf-johnnybravo-v1-0-2-en-es-de-fr-it-pt-nok-n73.png",
+    "jar": "games/jar/gf_johnnybravo_v1_0_2_en_es_de_fr_it_pt_nok_n73.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
     "id": "glu-castledos-lg-ke970-de-en-es-fr-it-pt-v1-0-0-full",
     "title": "Castlevania Dawn of Sorrow",
     "version": "1.0.0",
@@ -233,6 +275,20 @@
     "description": "Visit dedomil.net for more games!",
     "icon": "games/icons/glu-stranded2-nokia-6280-de-en-es-it-fr-pt-v1-0-2-full.png",
     "jar": "games/jar/glu_stranded2_nokia_6280_de_en_es_it_fr_pt_v1_0_2_full.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
+    "id": "glu-thedarkknight-nokia-6280-de-en-es-fr-it-pt-v1-0-0-full",
+    "title": "The Dark Knight",
+    "version": "1.0.0",
+    "vendor": "Glu Mobile",
+    "size": "443 KB",
+    "releaseDate": "2026-08-20",
+    "description": "Visit dedomil.net for more games!",
+    "icon": "games/icons/glu-thedarkknight-nokia-6280-de-en-es-fr-it-pt-v1-0-0-full.png",
+    "jar": "games/jar/glu_thedarkknight_nokia_6280_de_en_es_fr_it_pt_v1_0_0_full.jar",
     "screenSize": "240x320",
     "phoneType": "Nokia",
     "enableSound": true
@@ -322,6 +378,34 @@
     "enableSound": true
   },
   {
+    "id": "jurassicpark-s40v3a",
+    "title": "Jurassic Park",
+    "version": "1.2.5",
+    "vendor": "Gameloft SA",
+    "size": "912 KB",
+    "releaseDate": "2026-08-20",
+    "description": "By Gameloft SA",
+    "icon": "games/icons/jurassicpark-s40v3a.png",
+    "jar": "games/jar/JurassicPark_s40v3a.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
+    "id": "kam2-ninja-nokia-s40-3-240x320",
+    "title": "Kamikaze2 Ninja",
+    "version": "1.0.0",
+    "vendor": "HeroCraft",
+    "size": "186 KB",
+    "releaseDate": "2026-08-20",
+    "description": "By HeroCraft",
+    "icon": "games/icons/kam2-ninja-nokia-s40-3-240x320.png",
+    "jar": "games/jar/Kam2_Ninja__Nokia_S40_3_240x320.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
     "id": "mi3-nokia-6234-en-nonigp-101-n95",
     "title": "Mission Impossible III",
     "version": "1.0.1",
@@ -350,6 +434,20 @@
     "enableSound": true
   },
   {
+    "id": "phantom-mansion-origins-20240x32021",
+    "title": "Phantom Mansion Origins",
+    "version": "2.0",
+    "vendor": "mob.ua",
+    "size": "103 KB",
+    "releaseDate": "2026-08-20",
+    "description": "By mob.ua",
+    "icon": "games/icons/phantom-mansion-origins-20240x32021.png",
+    "jar": "games/jar/Phantom mansion origins-20240x32021.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
     "id": "piratesofthesevenseas-s40v3a-n6300",
     "title": "Pirates of the Seven Seas",
     "version": "1.0.1",
@@ -359,6 +457,20 @@
     "description": "Play a fearless pirate in search of lost treasure.",
     "icon": "games/icons/piratesofthesevenseas-s40v3a-n6300.png",
     "jar": "games/jar/PiratesOfTheSevenSeas_s40v3a-N6300.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
+    "id": "playerx-f-nokia-5300-en-legobatman-v1-0-1",
+    "title": "Lego Batman",
+    "version": "1.0.1",
+    "vendor": "Studio X",
+    "size": "472 KB",
+    "releaseDate": "2026-08-20",
+    "description": "Visit dedomil.net for more games!",
+    "icon": "games/icons/playerx-f-nokia-5300-en-legobatman-v1-0-1.png",
+    "jar": "games/jar/playerx_f_Nokia_5300_en_legobatman_v1_0_1.jar",
     "screenSize": "240x320",
     "phoneType": "Nokia",
     "enableSound": true
@@ -378,6 +490,20 @@
     "enableSound": true
   },
   {
+    "id": "popww-nokia6280-en-100",
+    "title": "Prince Of Persia - Warrior Within",
+    "version": "1.0.0",
+    "vendor": "Gameloft SA",
+    "size": "221 KB",
+    "releaseDate": "2026-08-20",
+    "description": "Visit dedomil.net for more games!",
+    "icon": "games/icons/popww-nokia6280-en-100.png",
+    "jar": "games/jar/POPWW_Nokia6280_EN_100.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
     "id": "powerrangers-mysticforce-s40v3a",
     "title": "Power Rangers MF",
     "version": "2.0.0",
@@ -387,6 +513,48 @@
     "description": "By Living Mobile/BiNPDA",
     "icon": "games/icons/powerrangers-mysticforce-s40v3a.png",
     "jar": "games/jar/PowerRangers-MysticForce_s40v3a.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
+    "id": "princeofpersia-theforgottensands-s40v3a-n6233",
+    "title": "Prince of Persia The Forgotten Sands",
+    "version": "1.2.3",
+    "vendor": "Gameloft SA",
+    "size": "879 KB",
+    "releaseDate": "2026-08-20",
+    "description": "By Gameloft SA",
+    "icon": "games/icons/princeofpersia-theforgottensands-s40v3a-n6233.png",
+    "jar": "games/jar/PrinceOfPersia-TheForgottenSands_s40v3a-N6233.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
+    "id": "ramboforever-nokia6280",
+    "title": "Rambo Forever",
+    "version": "01.00.00",
+    "vendor": "In-Fusio",
+    "size": "368 KB",
+    "releaseDate": "2026-08-20",
+    "description": "Visit dedomil.net for more games!",
+    "icon": "games/icons/ramboforever-nokia6280.png",
+    "jar": "games/jar/RamboForever_Nokia6280.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
+    "id": "scooby-doo-castle-capers-5-240x320",
+    "title": "Scooby-Doo Castle Capers",
+    "version": "1.0.0",
+    "vendor": "mob.ua",
+    "size": "81 KB",
+    "releaseDate": "2026-08-20",
+    "description": "By mob.ua",
+    "icon": "games/icons/scooby-doo-castle-capers-5-240x320.png",
+    "jar": "games/jar/Scooby-Doo Castle Capers-5-240x320.jar",
     "screenSize": "240x320",
     "phoneType": "Nokia",
     "enableSound": true
@@ -434,6 +602,20 @@
     "enableSound": true
   },
   {
+    "id": "spider-man-toxiccity-s40v5",
+    "title": "Spider-Man - Toxic City",
+    "version": "1.2.4",
+    "vendor": "Gameloft SA",
+    "size": "883 KB",
+    "releaseDate": "2026-08-20",
+    "description": "By Gameloft SA",
+    "icon": "games/icons/spider-man-toxiccity-s40v5.png",
+    "jar": "games/jar/Spider-Man-ToxicCity_s40v5.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
     "id": "splintercell-chaostheory-s40v3a-n6280",
     "title": "SplinterCell-ChaosTheory_s40v3a-N6280",
     "version": "1.0.0",
@@ -476,15 +658,29 @@
     "enableSound": true
   },
   {
-    "id": "super-mario-bros-240x320-192179",
-    "title": "Super Mario Bros.",
-    "version": "1.0",
-    "vendor": "mob.ua",
-    "size": "194 KB",
+    "id": "supermanbatmanheroesunited-de-en-es-fr-it-pt-sonyericssonk800i",
+    "title": "Superman Batman Heroes United",
+    "version": "1.0.5",
+    "vendor": "Glu Mobile Ltd",
+    "size": "458 KB",
     "releaseDate": "2026-08-20",
-    "description": "Best Games Only On MadiyarM.spaces.ru & AE-mods.ruNokia-MIDlet-Category: Game",
-    "icon": "games/icons/super-mario-bros-240x320-192179.png",
-    "jar": "games/jar/super_mario_bros_240x320_192179.jar",
+    "description": "Superman Batman Heroes United",
+    "icon": "games/icons/supermanbatmanheroesunited-de-en-es-fr-it-pt-sonyericssonk800i.png",
+    "jar": "games/jar/supermanbatmanheroesunited_de_en_es_fr_it_pt_SonyEricssonK800i.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
+    "id": "superman-returns-240x320-158030",
+    "title": "Superman",
+    "version": "1.0.5",
+    "vendor": "Warner Bros. Online_OrangeSA",
+    "size": "469 KB",
+    "releaseDate": "2026-08-20",
+    "description": "Mobile game based on the blockbuster film Superman Returns.",
+    "icon": "games/icons/superman-returns-240x320-158030.png",
+    "jar": "games/jar/superman_returns_240x320_158030.jar",
     "screenSize": "240x320",
     "phoneType": "Nokia",
     "enableSound": true
@@ -527,6 +723,20 @@
     "description": "By Electronic Arts",
     "icon": "games/icons/tomb-raider-underworld.png",
     "jar": "games/jar/Tomb Raider Underworld.jar",
+    "screenSize": "240x320",
+    "phoneType": "Nokia",
+    "enableSound": true
+  },
+  {
+    "id": "ultimatespider-man-s40v3a",
+    "title": "SpiderMan",
+    "version": "1.2.19",
+    "vendor": "Mforma group, Inc",
+    "size": "280 KB",
+    "releaseDate": "2026-08-20",
+    "description": "By Mforma group, Inc",
+    "icon": "games/icons/ultimatespider-man-s40v3a.png",
+    "jar": "games/jar/UltimateSpider-Man_S40v3a.jar",
     "screenSize": "240x320",
     "phoneType": "Nokia",
     "enableSound": true
